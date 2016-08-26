@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arunicus</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="arunicus.css" rel="stylesheet">
+  </head>
+  <body>
+    <div>
+        <div class="row text-center">
+        </br>
+        </div>
+      <div class="row text-center">
+        <div>
+          <a href="index.html"><h2>Arun Venkatesh</h2></a>
+        </div>
+
+        <h5>Software developer, New Jersey. Proud dad and husand. Love solving problems especially when involves maths and software.</h5>
+                </div>
+            <div class="row">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://twitter.com/arunvenkatesh">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" style="color:black;"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/arun.venkatesh">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" style="color:black;"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/arunicus">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" style="color:black;"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/arun-venkatesh-62276612">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" style="color:black;"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:arunvenkate@gmail.com" title="Lets Talk.">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" style="color:black;"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+            <div class="row  text-center">
+                <a href="index.html"><button type="button" class="btn btn-default">Blog</button></a>
+                <a href="index.html"><button type="button" class="btn btn-default">Work</button></a>
+                <a href="about.html"><button type="button" class="btn btn-default">About</button></a>
+            </div>
+<div class="row  text-center">
+      <hr>
+  </div>
+          </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Xcode-8 App Signing</h1>
+                        <h2 class="subheading">Fundamentals and whats new with Xcode8 app signing.</h2>
+                        <span class="meta">Posted by <a href="#">Arunicus</a> on July 15, 2016</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Post Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <img src="fundamentalsxcodesign.png" width="600" height="300">
+                    <p>To understand the fundamentals of App Signing we need to understand 3 important things.</p>
+
+
+<p><h4>Signing certificate:</h4>
+This is all about developer identity , this is issued by apple. Each developer will have developer/distribution certificates.
+Both certificate must have a private key and even though apple issues it, apple never has a copy of the private key</p>
+
+<p><h4>Provisioning profile:</h4>
+This certificate is issued by apple. This is all about your applications. This has details that allow access to run on device and allow access to the feature.</p>
+
+<p><h4>Entitlements Certificate:</h4>
+This contains support of capabilities. This is unique per target , since each target might different set of entitlements.
+Xcode provides a dedicated editor for adding and removing these capabilities.</p>
+
+
+<p><h4>Developer Certificate</h4>
+When a developer has multiple development machine and use the same account, usually a popup is shown saying your account already has a valid certificate and Xcode offers to reset. This is because the private key is not available in current machine. Fixing this will invalidate the certificate that was previously issued. We end up doing this back and forth. Xcode-8 has an answer for this hassle, we can have multiple development certificates and private key for multiple machines.But this is only for development certificate, Distribution certs still have limit of 1.This development certificates can be create by Xcode or developer site, Support certificates create by xcode8 or later and also 100% backward compatible.</p>
+
+
+<p><h4>App Signing</h4>
+You now have a choice in how you code sign and provision your apps.</p>
+<h4>Automatic vs Customization</h4>
+
+<p>you always had a choice of automatic vs. customized provisioning. It’s just that the implementation of those choices was confusing and often did the wrong thing. And we never choose Automatic since it was a blackbox to deal with.</p>
+
+<p>Automatic Code Signing uses a new Xcode managed profiles.
+By selecting Automatic Code Signing when creating the project, Xcode will automatically create and manage profiles for the developer. Xcode creates dedicated profile that is separate from any that you have already created. This is an improvisation of the “Fix Issue” button but is segregated so it won’t mess up your existing managed profiles. Automatic Code Signing looks great and it will probable be used by a ton of developers.</p> 
+
+<!-- We can add a demo or some screenshot showing how the a profile is create and edited when capabilities are added to app -->
+
+<p>Customized Code Signing is how we have been managing our profiles and apps for years and it allows us the most control over how our apps are code signed.
+large teams like us with multiple apps in the same workspace require more fine-grained control over the code signing in their apps, and customized code signing helps those teams.</p>
+
+<p>Both the cases instead of being buried in the Build Settings, Code Signing is now displayed front and center in the General tab.  When “Automatically manage signing” is unchecked we can specifically select the provisioning profile we wish to use for each Configuration.Now this in itself is nothing new, we have always been able to do this in the Build Settings tab.
+The best part is with the filtered list of profiles that Xcode 8 displays here.The drop down list of profiles now groups the Eligible profiles above the Ineligible profiles. 
+Meaning that profiles that match the bundle identifier absolutely or with a wild card will be displayed above any profiles that don’t match at all.</p>
+
+<p>if you select a profile that doesn’t match the bundle identifier you now get error messages that will tell you exactly what the problem is, this is a massive improvement over what we had in the past. No longer is Xcode hiding the details from us. No longer should we have to try to figure out what might be wrong. Xcode 8 will tell you exactly what is wrong, misaligned, expired, or missing.</p>
+
+<p><h4>Report Navigator</h4>
+The Xcode team has included a new report in the Report Navigator that outlines everything Xcode does on your behalf related to code signing.</p>
+
+<p>This report completely lifts the covers off of the “API” that Xcode uses to talk to the developer portal, which was always happening in previous versions as well but under the hood. Now when Xcode 8 handles code signing on your behalf, you can see exactly what checks are being performed, and what Xcode 8 is doing in order to fix the problems it identifies.</p>
+
+
+<p>Last but best thing, a new Build Configuration setting, PROVISIONING_PROFILE_SPECIFIER. In the past you could specify the PROVISIONING_PROFILE by name and Xcode would instead reference the UUID of the profile in the project file like so: PROVISIONING_PROFILE = “9b7bca71-29ac-44de-a96d-131d06b46501”. If the profile with that exact UUID ever went missing, Xcode had no way to reconcile this on its own. You would have to go into Build Settings and find the profile name in your list again in order for Xcode to get the new UUID. PROVISIONING_PROFILE_SPECIFIER allows you to specify the provisioning profile name, but now Xcode 8 will save the following in your project file: PROVISIONING_PROFILE_SPECIFIER = “UI2I5K7L3SF/TestProjectProfile".—a combination of the Team ID and profile name (as it is named in the Developer Portal, not necessarily the actual filename). This way Xcode will always use the latest profile of that name regardless of UUID. Xcode will no longer use an old, out-of-date profile after you have updated it. </p>
+
+<p>The best practice that Apple mentioned. Application distribution is a two-step process: compilation and code signing. Your app should first be compiled into an XCArchive and then exported to an IPA for distribution. Because of this, we do not need to have the exact release certificates and profiles set in your Release configuration. As long as the app compiles with the correct release flags, optimizations, etc., it can be signed with an AdHoc or even a Development profile. You just need to use the correct App Store or Enterprise profile when you export the IPA or submit to the App Store. This can help developers who don’t have access to the release credentials and certificates from seeing unnecessary errors that they cannot do anything about.
+</p>
+                </div>
+            </div>
+        </div>
+
+    <hr>
+
+
+    <!-- jQuery 
+    <script src="jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
